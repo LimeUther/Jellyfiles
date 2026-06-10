@@ -10,7 +10,7 @@ Rectangle {
   id: root
 
   property string currentTime: Qt.formatDateTime(new Date(), "hh\nmm")
-  property string currentDay: Qt.formatDateTime(new Date(), "dd")
+  property string currentDay:  Qt.formatDateTime(new Date(), "dd")
   property string currentWDay: Qt.formatDateTime(new Date(), "ddd")
 
   property real cpuUsage: 3
@@ -38,6 +38,7 @@ Rectangle {
       }
     }
   }
+
   Process {
     id: ramProcess
     command: [
@@ -88,7 +89,7 @@ Rectangle {
       implicitHeight: childrenRect.height + 10
       implicitWidth: parent.width - 11
 
-      color: Colors.color19
+      color: Colors.surface_container_highest
       radius: Config.moduleRadius
 
       ColumnLayout {
@@ -98,7 +99,7 @@ Rectangle {
         Text {
           Layout.alignment: Qt.AlignHCenter
           text: root.currentTime
-          color: Colors.foreground
+          color: Colors.on_surface
           font.family: "FiraCode Nerd Font"
           font.weight: Font.Black
           font.pixelSize: 12
@@ -106,14 +107,14 @@ Rectangle {
         Text {
           Layout.alignment: Qt.AlignHCenter
           text: "───"
-          color: Colors.color20
+          color: Colors.surface_tint
           font.family: "FiraCode Nerd Font"
           font.pixelSize: 8
         }
         Text {
           Layout.alignment: Qt.AlignHCenter
           text: root.currentWDay
-          color: Colors.foreground
+          color: Colors.on_surface
           font.family: "FiraCode Nerd Font"
           font.weight: Font.Black
           font.pixelSize: 9
@@ -121,7 +122,7 @@ Rectangle {
         Text {
           Layout.alignment: Qt.AlignHCenter
           text: root.currentDay
-          color: Colors.foreground
+          color: Colors.on_surface
           font.family: "FiraCode Nerd Font"
           font.weight: Font.Black
           font.pixelSize: 12
@@ -136,7 +137,7 @@ Rectangle {
       implicitHeight: childrenRect.height + 10
       implicitWidth: parent.width - 11
 
-      color: Colors.color19
+      color: Colors.surface_container_highest
       radius: Config.moduleRadius
 
       ColumnLayout {
@@ -147,16 +148,16 @@ Rectangle {
           Layout.alignment: Qt.AlignHCenter
           percent: root.cpuUsage
           size: 22
-          indicatorColor: Colors.color12
-          backgroundColor: Colors.color18
+          indicatorColor: Colors.primary
+          backgroundColor: Colors.surface_container_lowest
         }
 
         RadialIndicator {
           Layout.alignment: Qt.AlignHCenter
           percent: root.ramUsage
           size: 22
-          indicatorColor: Colors.color10
-          backgroundColor: Colors.color18
+          indicatorColor: Colors.tertiary
+          backgroundColor: Colors.surface_container_lowest
         }
       }
     }

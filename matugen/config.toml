@@ -1,0 +1,22 @@
+[config]
+version_check = false
+cachin = false
+expr_prefix = "{{"
+expr_postfix = "}}"
+
+[config.wallpaper]
+set = true
+command = "awww img --transition-type wipe {{ image }}"
+
+[templates.quickshell]
+input_path = 'templates/quickshell.qml'
+output_path = '~/.config/quickshell/configs/Colors.qml'
+
+[templates.kitty]
+input_path = "templates/kitty.conf"
+output_path = '~/.config/kitty/themes/colors.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
+
+[templates.firefox]
+input_path = 'templates/firefox.css'
+output_path = '~/.config/mozilla/firefox/afsx4e5v.Uther/chrome/theme/color-schemes/matugen/ffu-colorscheme.css'

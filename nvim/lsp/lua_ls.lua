@@ -21,10 +21,10 @@ return {
       },
       diagnostics = {
         enable = true,
-        globals = { "vim" },
+        globals = { "hl", 'vim' },
       },
       workspace = {
-        library = { vim.env.VIMRUNTIME },
+        library = { vim.env.VIMRUNTIME, '/usr/share/hypr/stubs' },
         checkthirdParty = false,
       },
     }

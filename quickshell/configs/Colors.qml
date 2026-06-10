@@ -2,59 +2,65 @@ pragma Singleton
 import Quickshell
 import QtQuick
 
+// qmllint disable
 Singleton {
-  property color foreground: "#e8e8d3"
-  property color background: "#151515"
-  property color cursor: "#b0d0f0"
-  property color cursor_text_color: "#151515"
-  property color selection_foreground: "#e8e8d3"
-  property color selection_background: "#404040"
+  readonly property color primary:                   "#aec6ff"
+  readonly property color on_primary:                "#112f60"
+  readonly property color primary_container:         "#2c4678"
+  readonly property color on_primary_container:      "#d8e2ff"
+  readonly property color inverse_primary:           "#445e91"
+  readonly property color primary_fixed:             "#d8e2ff"
+  readonly property color primary_fixed_dim:         "#aec6ff"
+  readonly property color on_primary_fixed:          "#001a42"
+  readonly property color on_primary_fixed_variant:  "#2c4678"
 
-  // # Black
-  property color color0: "#151515"
-  property color color8: "#888888"
+  readonly property color secondary:                 "#bfc6dc"
+  readonly property color on_secondary:              "#293041"
+  readonly property color secondary_container:       "#3f4759"
+  readonly property color on_secondary_container:    "#dbe2f9"
+  readonly property color secondary_fixed:           "#dbe2f9"
+  readonly property color secondary_fixed_dim:       "#bfc6dc"
+  readonly property color on_secondary_fixed:        "#141b2c"
+  readonly property color on_secondary_fixed_variant:"#3f4759"
 
-  // # Red
-  property color color1: "#cf6a4c"
-  property color color9: "#902020"
+  readonly property color tertiary:                  "#debcdf"
+  readonly property color on_tertiary:               "#402843"
+  readonly property color tertiary_container:        "#583e5b"
+  readonly property color on_tertiary_container:     "#fcd7fb"
+  readonly property color tertiary_fixed:            "#fcd7fb"
+  readonly property color tertiary_fixed_dim:        "#debcdf"
+  readonly property color on_tertiary_fixed:         "#29132d"
+  readonly property color on_tertiary_fixed_variant: "#583e5b"
 
-  // # Green
-  property color color2: "#99ad6a"
-  property color color10: "#70b950"
+  readonly property color error:                     "#ffb4ab"
+  readonly property color on_error:                  "#690005"
+  readonly property color error_container:           "#93000a"
+  readonly property color on_error_container:        "#ffdad6"
 
-  // # Yellow
-  property color color3: "#fad07a"
-  property color color11: "#ffb964"
+  readonly property color surface_dim:               "#111318"
+  readonly property color surface:                   "#111318"
+  readonly property color surface_tint:              "#aec6ff"
+  readonly property color surface_bright:            "#37393e"
+  readonly property color surface_container_lowest:  "#0c0e13"
+  readonly property color surface_container_low:     "#1a1b20"
+  readonly property color surface_container:         "#1e1f25"
+  readonly property color surface_container_high:    "#282a2f"
+  readonly property color surface_container_highest: "#33353a"
 
-  // # Blue
-  property color color4: "#8197bf"
-  property color color12: "#8fbfdc"
+  readonly property color on_surface:                "#e2e2e9"
+  readonly property color on_surface_variant:        "#c5c6d0"
 
-  // # Magenta
-  property color color5: "#c6b6ee"
-  property color color13: "#700089"
+  readonly property color outline:                   "#8e9099"
+  readonly property color outline_variant:           "#44474f"
 
-  // # Cyan
-  property color color6: "#668799"
-  property color color14: "#8fbfdc"
+  readonly property color inverse_surface:           "#e2e2e9"
+  readonly property color inverse_on_surface:        "#2f3036"
 
-  // # White
-  property color color7: "#e8e8d3"
-  property color color15: "#f0f0f0"
+  readonly property color surface_variant:           "#44474f"
+  readonly property color background:                "#111318"
+  readonly property color on_background:             "#e2e2e9"
 
-  // # Extended colors
-  property color color16: "#cf6a4c"
-  property color color17: "#d8ad4c"
-  property color color18: "#1c1c1c"
-  property color color19: "#303030"
-  // property color color19: "transparent"
-  property color color20: "#636363"
-  property color color21: "#c7c7c7"
-
-  // # Tab bar
-  property color active_tab_foreground: "#e8e8d3"
-  property color active_tab_background: "#1c1c1c"
-  property color inactive_tab_foreground: "#888888"
-  property color inactive_tab_background: "#151515"
-
+  readonly property color shadow:                    "#000000"
+  readonly property color scrim:                     "#000000"
+  readonly property color source_color:              "#242935"
 }

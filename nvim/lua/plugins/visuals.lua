@@ -1,57 +1,22 @@
 return {
   {
-    "wtfox/jellybeans.nvim",
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "jellybeans"
+      vim.cmd('colorscheme github_dark_default')
 
-      vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#556633", bg = "none" })
-      vim.api.nvim_set_hl(0, "FloatTitle", { fg = "#556633", bg = "none" })
-      vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#556633", bg = "none" })
-      vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#556633", bg = "none" })
-      vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "none", fg = "none" })
-      vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "none", fg = "none" })
-      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", ctermbg = "NONE" })
-      vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
-      vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE", ctermbg = "NONE" })
-      vim.api.nvim_set_hl(0, "TelescopePromptBorder", {bg = "none", fg = "#556633" })
-      vim.api.nvim_set_hl(0, "TelescopePromptTitle", {bg = "none", fg = "#556633" })
-      vim.api.nvim_set_hl(0, "TelescopePromptNormal", {bg = "none", ctermbg = "none" })
-    end
-  },
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons"
-    },
-    config = function()
-      local jellybeans_theme = {
-        normal = {
-          a = { bg = 'none', fg = "#fad07a" },
-          b = { bg = 'none' },
-        },
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "StatusLine", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "CursorLine", { bg = "#141414" })
 
-        insert = { a = { bg = 'none', fg = "#8fbfdc" } },
-        visual = { a = { bg = 'none', fg = "#70b950" } },
-        replace = { a = { bg = 'none', fg = "#cf6a4c" } },
-
-        inactive = {
-          a = { bg = 'none', fg = "#151515" },
-          b = { bg = 'none' },
-        },
-      }
-
-      require('lualine').setup {
-        options = {
-          theme = jellybeans_theme,
-          component_separators = "│",
-          section_separators = "│",
-        },
-      }
-    end
+      vim.api.nvim_set_hl(0, "FloatBorder", { link = "TelescopePromptBorder" })
+      vim.api.nvim_set_hl(0, "FloatTitle", { link = "TelescopePromptNormal" })
+    end,
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -66,8 +31,64 @@ return {
     lazy = false,
   },
   {
+    "goolord/alpha-nvim",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+      local alpha = require("alpha")
+      local dashboard = require("alpha.themes.dashboard")
+      local num_plugins_loaded = require("lazy").stats().loaded
+      dashboard.section.header.val = {
+
+        "                                                                   ",
+        "      ███████████           █████      ██                    ",
+        "     ███████████             █████                            ",
+        "     █████████ ███████ ███████████ ███   ███████    ",
+        "    ████████████████ ████████████ █████ ██████████████  ",
+        "   ██████████████    █████████████ █████ █████ ████ █████  ",
+        " ██████████████████████████████████ █████ █████ ████ █████ ",
+        "██████  ███ █████████████████ ████ █████ █████ ████ ██████",
+
+      }
+      dashboard.section.header.opts.hl = "Identifier"
+
+      dashboard.section.buttons.val = {
+        dashboard.button("e   ", "   New file", "<cmd>enew<CR>"),
+        dashboard.button("o   ", "   Recent Files", "<cmd>Telescope oldfiles<cr>"),
+        dashboard.button("f   ", "   Explorer", "<cmd>Oil<cr>"),
+        dashboard.button("c   ", "   Neovim config", "<cmd>e ~/Projects/Dotfiles/nvim/ | cd %:p:h<cr>"),
+        dashboard.button("l   ", "   Lazy", "<cmd>Lazy<cr>"),
+        dashboard.button("q   ", "   Quit NVIM", ":qa<CR>"),
+      }
+
+      local footer = {
+        type = "text",
+        val = { num_plugins_loaded .. " plugins loaded." },
+        opts = { position = "center", hl = "Comment" },
+      }
+
+      local section = {
+        header = dashboard.section.header,
+        buttons = dashboard.section.buttons,
+        footer = footer,
+      }
+
+      local opts = {
+        layout = {
+          { type = "padding", val = 4 },
+          section.header,
+          { type = "padding", val = 5 },
+          section.buttons,
+          { type = "padding", val = 3 },
+          section.footer,
+        },
+      }
+
+      alpha.setup(opts)
+    end
+  },
+  {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    opts = {},
   }
 }
+

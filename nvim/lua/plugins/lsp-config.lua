@@ -4,6 +4,10 @@ return {
     config = function()
       require("mason").setup()
 
+      vim.lsp.config("*", {
+        capabilities = require("blink.cmp").get_lsp_capabilities()
+      })
+
       vim.lsp.enable({
         "bashls",
         "lua_ls",
@@ -21,6 +25,7 @@ return {
     dependencies = { "rafamadriz/friendly-snippets" },
     version = '1.*',
     opts = {
+
       keymap = {
         preset = "default",
         ["<C-space>"] = {},
@@ -36,11 +41,18 @@ return {
         ["<C-l>"] = { "snippet_forward", "fallback" },
         ["<C-h>"] = { "snippet_backward", "fallback" },
       },
+
       appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = "normal"
       },
       completion = {
+        menu = {
+          draw = {
+            treesitter = { 'lsp' }
+          },
+          winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+        },
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 200,

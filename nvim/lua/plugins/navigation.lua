@@ -8,7 +8,6 @@ return {
     },
     config = function ()
       local builtin = require("telescope.builtin")
-      local telescope = require("telescope")
 
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
@@ -17,28 +16,6 @@ return {
       vim.keymap.set("n", "<leader>fa", function ()
         builtin.find_files({ no_ignore = true, hidden = true })
       end, { desc = "Telescope find files including hidden and gitignored" })
-
-      require('telescope.pickers.layout_strategies').custom = function(picker, max_columns, max_lines, layout_config)
-        local layout = require('telescope.pickers.layout_strategies').bottom_pane(picker, max_columns, max_lines, layout_config)
-        if layout.preview then layout.preview.title = '' end
-        return layout
-      end
-
-      telescope.setup{
-        defaults = {
-          layout_strategy = "custom",
-          sorting_strategy = "ascending",
-          layout_config = {
-            height = 0.3,
-          },
-          border = true,
-          borderchars = {
-            results = { " " },
-            prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-            preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-          },
-        },
-      }
     end
   },
   {
@@ -51,6 +28,7 @@ return {
           ["<C-h>"] = false,
           ["<M-h>"] = "actions.select_split",
         },
+
         view_options = {
           show_hidden = true,
         }
@@ -81,9 +59,28 @@ return {
       vim.keymap.set("n", "<A-2>", function() harpoon:list():select(2) end)
       vim.keymap.set("n", "<A-3>", function() harpoon:list():select(3) end)
       vim.keymap.set("n", "<A-4>", function() harpoon:list():select(4) end)
+    end
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    vim.keymap.set('n', 'C-h', ':TmuxNavigateLeft<CR>'),
+    vim.keymap.set('n', 'C-j', ':TmuxNavigateDown<CR>'),
+    vim.keymap.set('n', 'C-k', ':TmuxNavigateUp<CR>'),
+    vim.keymap.set('n', 'C-l', ':TmuxNavigateRight<CR>'),
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    lazy = false,
+    config = function ()
+      vim.keymap.set('n', '<C-n>', ':Neotree show toggle<CR>')
 
-      vim.keymap.set("n", "<C-P>", function() harpoon:list():prev() end)
-      vim.keymap.set("n", "<C-N>", function() harpoon:list():next() end)
+      vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "none", ctermbg = "none" })
     end
   }
 }

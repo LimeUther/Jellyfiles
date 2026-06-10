@@ -12,6 +12,7 @@ Scope {
     model: Quickshell.screens
 
     delegate: Component {
+
       // qmllint disable uncreatable-type
       WlrLayershell {
         id: barRoot
@@ -41,7 +42,7 @@ Scope {
             Colors.background.r,
             Colors.background.g,
             Colors.background.b,
-            0.8
+            0.85
           )
 
           anchors {

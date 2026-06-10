@@ -10,7 +10,7 @@ keymap("n", "<leader>w", "<cmd>w!<CR>", s)
 keymap("n", "<leader>q", "<cmd>q!<CR>", s)
 keymap("n", "<leader>te", "<cmd>tabnew<CR>", s)
 keymap("n", "<leader>td", "<cmd>tabc<CR>", s)
-keymap("n", "<leader>_", "<cmd>vsplit<CR>", s)
+keymap("n", "<leader>|", "<cmd>vsplit<CR>", s)
 keymap("n", "<leader>-", "<cmd>split<CR>", s)
 keymap("n", "<leader>fo", ":lua vim.lsp.buf.format()<CR>", s)
 keymap("v", "<leader>p", '"_dP')
@@ -21,5 +21,10 @@ keymap("n", "<leader>re", '<cmd>restart<cr>', {
   desc = "Restart Neovim (:restart)"
 })
 
+keymap("n", "<C-h>", ":wincmd h<CR>")
+keymap("n", "<C-j>", ":wincmd j<CR>")
+keymap("n", "<C-k>", ":wincmd k<CR>")
+keymap("n", "<C-l>", ":wincmd l<CR>")
+
 local opts = { noremap = true, silent = true }
-keymap("n", "grd", "<cnd>lua vim.lsp.buf.definition()<CR>", opts)
+keymap("n", "grd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)

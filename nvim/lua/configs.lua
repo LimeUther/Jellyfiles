@@ -1,4 +1,5 @@
 local opt = vim.opt
+
 opt.signcolumn = "yes:1"
 -- opt.colorcolumn = "80"
 opt.termguicolors = true

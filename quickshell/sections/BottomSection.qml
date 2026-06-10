@@ -16,14 +16,6 @@ Rectangle {
 
   color: "transparent"
 
-  Timer {
-    interval: 1000
-    running: true
-    repeat: true
-    onTriggered: {
-      root.battery = UPower.displayDevice.percentage
-    }
-  }
   ColumnLayout {
     anchors.bottom: parent.bottom
     anchors.bottomMargin: 6
@@ -38,50 +30,50 @@ Rectangle {
       implicitHeight: childrenRect.height + 10
 
       radius: Config.moduleRadius
-      color: Colors.color19
+      color: Colors.surface_container_highest
 
       ColumnLayout {
         anchors.centerIn: parent
         spacing: 0
 
-        Text {
+        // Text {
+        //   Layout.alignment: Qt.AlignHCenter
+        //   text: Math.round(root.battery * 100) + "%"
+        //   color: Colors.on_surface
+        //   font.family: "FiraCode Nerd Font"
+        //   font.weight: Font.Black
+        //   font.pixelSize: 9
+        // }
+        // Text {
+        //   Layout.alignment: Qt.AlignHCenter
+        //   text: ""
+        //   font.pixelSize: 2
+        // }
+
+        Rectangle {
           Layout.alignment: Qt.AlignHCenter
-          text: Math.round(root.battery * 100) + "%"
-          color: Colors.foreground
-          font.family: "FiraCode Nerd Font"
-          font.weight: Font.Black
-          font.pixelSize: 9
-        }
-        Text {
-          Layout.alignment: Qt.AlignHCenter
-          text: ""
-          font.pixelSize: 2
+          implicitWidth: 5
+          implicitHeight: 2
+
+          color: (root.battery == 1) ? Colors.tertiary : Colors.surface_container_lowest
         }
 
         Rectangle {
           Layout.alignment: Qt.AlignHCenter
-          implicitWidth: 7
-          implicitHeight: 3
+          implicitWidth: 11
+          implicitHeight: 18
+          radius: 2
 
-          color: (root.battery == 1) ? Colors.color10 : Colors.color18
-        }
-
-        Rectangle {
-          Layout.alignment: Qt.AlignHCenter
-          implicitWidth: 13
-          implicitHeight: 25
-          radius: Config.moduleRadius
-
-          color: Colors.color18
+          color: Colors.surface_container_lowest
 
           Rectangle {
             anchors.bottom: parent.bottom
 
             implicitWidth: parent.width
             implicitHeight: parent.height * root.battery
-            radius: Config.moduleRadius
+            radius: 2
 
-            color: Colors.color10
+            color: Colors.tertiary
           }
         }
       }
@@ -95,11 +87,11 @@ Rectangle {
       implicitHeight: parent.width - 11
 
       radius: Config.moduleRadius
-      color: Colors.color19
+      color: Colors.surface_container_highest
 
       Text {
         text: "⏻"
-        color: Colors.color1
+        color: Colors.error
         font.family: "FiraCode Nerd Font"
         font.pixelSize: 13
         anchors.centerIn: parent

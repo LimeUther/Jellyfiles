@@ -9,4 +9,3 @@ autocmd('TextYankPost', {
   end,
   group = highlight_group,
 })
-
