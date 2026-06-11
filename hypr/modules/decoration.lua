@@ -31,10 +31,12 @@ hl.config({
 
     blur = {
       enabled   =  true,
-      size      =    40,
-      passes    =     0,
+      size      =    20,
+      passes    =     2,
       vibrancy  = .2696,
-      noise     = .10591,
+      noise     =     0,
+      popups = false,
+      input_methods = false
     },
   },
 
@@ -73,7 +75,6 @@ hl.animation({ leaf = "layersIn",         enabled = true, speed = 1.8, bezier = 
 hl.animation({ leaf = "layersOut",        enabled = true, speed = 1.5, bezier = "menu_accel", style = "slide"             })
 hl.animation({ leaf = "fadeLayersIn",     enabled = true, speed = 1.6, bezier = "menu_decel"                              })
 hl.animation({ leaf = "fadeLayersOut",    enabled = true, speed = 1.8, bezier = "menu_accel"                              })
-hl.animation({ leaf = "workspaces",       enabled = false, speed = 4.0, bezier = "menu_decel", style = "slidevert"         })
+hl.animation({ leaf = "workspaces",       enabled = true, speed = 2.5, bezier = "md3_decel", style = "slidevert"          })
 hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 2.3, bezier = "md3_decel",  style = "slidefadevert 15%" })
-hl.animation({ leaf = "specialWorkspace", enabled = false, speed = 2.3, bezier = "md3_decel",  style = "slidefadevert 15%" })
 

@@ -7,15 +7,15 @@ return {
     config = function()
       vim.cmd('colorscheme github_dark_default')
 
-      vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
-      vim.api.nvim_set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
-      vim.api.nvim_set_hl(0, "StatusLine", { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "Normal",       { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "NormalNC",     { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat",  { bg = "none", ctermbg = "none" })
+      vim.api.nvim_set_hl(0, "StatusLine",   { bg = "none", ctermbg = "none" })
       vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none", ctermbg = "none" })
-      vim.api.nvim_set_hl(0, "CursorLine", { bg = "#141414" })
+      vim.api.nvim_set_hl(0, "CursorLine",   { bg = "#1a1a1a"                })
 
       vim.api.nvim_set_hl(0, "FloatBorder", { link = "TelescopePromptBorder" })
-      vim.api.nvim_set_hl(0, "FloatTitle", { link = "TelescopePromptNormal" })
+      vim.api.nvim_set_hl(0, "FloatTitle",  { link = "TelescopePromptNormal" })
     end,
   },
   {
@@ -39,14 +39,15 @@ return {
       local num_plugins_loaded = require("lazy").stats().loaded
       dashboard.section.header.val = {
 
-        "                                                                   ",
-        "      ███████████           █████      ██                    ",
-        "     ███████████             █████                            ",
-        "     █████████ ███████ ███████████ ███   ███████    ",
-        "    ████████████████ ████████████ █████ ██████████████  ",
-        "   ██████████████    █████████████ █████ █████ ████ █████  ",
-        " ██████████████████████████████████ █████ █████ ████ █████ ",
-        "██████  ███ █████████████████ ████ █████ █████ ████ ██████",
+        "                              ▀████▀▄▄              ▄█               ",
+        "                                █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█               ",
+        "      ███████████   ▄        █          ▀▀▀▀▄  ▄▀                ",
+        "     ███████████   ▄▀ ▀▄      ▀▄              ▀▄                 ",
+        "     █████████ █ ▄▀    █     █▀   ▄█▀▄      ▄█  ███████    ",
+        "    ████████████ ▀▄     ▀▄  █     ▀██▀     ██▄█ ▀███████████  ",
+        "   ██████████████ ▀▄    ▄▀ █   ▄██▄   ▄  ▄  ▀▀ █ ██ ████ █████  ",
+        " ████████████████▀ █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀ ██ ████ █████ ",
+        "██████  ███ █████ █   █  █      ▄▄           ▄▀ ███ ████ ██████",
 
       }
       dashboard.section.header.opts.hl = "Identifier"
@@ -74,7 +75,7 @@ return {
 
       local opts = {
         layout = {
-          { type = "padding", val = 4 },
+          { type = "padding", val = 13 },
           section.header,
           { type = "padding", val = 5 },
           section.buttons,
@@ -89,6 +90,16 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
+  },
+  {
+    'vyfor/cord.nvim',
+    config = function ()
+      require('cord').setup {
+        buttons = {
+          { label = 'View Repository', url = function(opts) return opts.repo_url end },
+        },
+      }
+    end
   }
 }
 

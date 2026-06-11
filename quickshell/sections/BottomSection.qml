@@ -3,12 +3,22 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Services.UPower
-import qs.configs
+import Quickshell.Services.Pipewire
+import qs.modules
 
 Rectangle {
   id: root
 
+  readonly property PwNode sink: Pipewire.defaultAudioSink
+
   property real battery: UPower.displayDevice.percentage
+  property real volume: sink?.audio?.volume ?? 0
+  property bool muted: sink?.audio?.muted ?? false
+
+  PwObjectTracker {
+    id: pwObjectTracker
+    objects: [Pipewire.defaultAudioSink, Pipewire.defaultAudioSource]
+  }
 
   Layout.fillWidth: true
   Layout.fillHeight: true
@@ -22,80 +32,39 @@ Rectangle {
 
     width: parent.width
 
+    // Volume Module
+    SystemIcon {
+      icons: root.muted ? ['../assets/volume_0'] : [
+        '../assets/volume_1.png',
+        '../assets/volume_2.png',
+        '../assets/volume_3.png'
+      ]
+
+      progress: root.volume
+    }
+
     // Battery Module
-    Rectangle {
-      Layout.alignment: Qt.AlignHCenter
+    SystemIcon {
+      icons: [
+        '../assets/battery_0.png',
+        '../assets/battery_1.png',
+        '../assets/battery_2.png',
+        '../assets/battery_3.png',
+        '../assets/battery_4.png',
+        '../assets/battery_5.png',
+        '../assets/battery_6.png',
+        '../assets/battery_7.png'
+      ]
 
-      implicitWidth: parent.width - 11
-      implicitHeight: childrenRect.height + 10
-
-      radius: Config.moduleRadius
-      color: Colors.surface_container_highest
-
-      ColumnLayout {
-        anchors.centerIn: parent
-        spacing: 0
-
-        // Text {
-        //   Layout.alignment: Qt.AlignHCenter
-        //   text: Math.round(root.battery * 100) + "%"
-        //   color: Colors.on_surface
-        //   font.family: "FiraCode Nerd Font"
-        //   font.weight: Font.Black
-        //   font.pixelSize: 9
-        // }
-        // Text {
-        //   Layout.alignment: Qt.AlignHCenter
-        //   text: ""
-        //   font.pixelSize: 2
-        // }
-
-        Rectangle {
-          Layout.alignment: Qt.AlignHCenter
-          implicitWidth: 5
-          implicitHeight: 2
-
-          color: (root.battery == 1) ? Colors.tertiary : Colors.surface_container_lowest
-        }
-
-        Rectangle {
-          Layout.alignment: Qt.AlignHCenter
-          implicitWidth: 11
-          implicitHeight: 18
-          radius: 2
-
-          color: Colors.surface_container_lowest
-
-          Rectangle {
-            anchors.bottom: parent.bottom
-
-            implicitWidth: parent.width
-            implicitHeight: parent.height * root.battery
-            radius: 2
-
-            color: Colors.tertiary
-          }
-        }
-      }
+      progress: root.battery
+      rotation: -90
     }
 
     // Power Module
-    Rectangle {
-      Layout.alignment: Qt.AlignHCenter
-
-      implicitWidth: parent.width - 11
-      implicitHeight: parent.width - 11
-
-      radius: Config.moduleRadius
-      color: Colors.surface_container_highest
-
-      Text {
-        text: "⏻"
-        color: Colors.error
-        font.family: "FiraCode Nerd Font"
-        font.pixelSize: 13
-        anchors.centerIn: parent
-      }
+    SystemIcon {
+      icons: [
+        '../assets/power.png',
+      ]
     }
   }
 }

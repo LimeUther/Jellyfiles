@@ -25,5 +25,6 @@ opt.completeopt = { "menuone", "popup", "noinsert" }
 opt.winborder = "rounded"
 opt.hlsearch = false
 vim.o.showmode = false
+vim.wo.cursorline = false
 
 vim.cmd.filetype("plugin indent on")
