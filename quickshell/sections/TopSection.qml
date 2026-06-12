@@ -149,7 +149,7 @@ Rectangle {
           percent: root.cpuUsage
           size: 22
           indicatorColor: Colors.primary
-          backgroundColor: Colors.surface_container_lowest
+          backgroundColor: Colors.surface_container
         }
 
         RadialIndicator {
@@ -157,7 +157,7 @@ Rectangle {
           percent: root.ramUsage
           size: 22
           indicatorColor: Colors.tertiary
-          backgroundColor: Colors.surface_container_lowest
+          backgroundColor: Colors.surface_container
         }
       }
     }

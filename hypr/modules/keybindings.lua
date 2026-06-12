@@ -45,6 +45,8 @@ hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("pkill slurp || grim -c -g \"$(sl
 hl.bind("CONTROL + PRINT",     hl.dsp.exec_cmd("pkill slurp || grim -c -g \"$(slurp)\" - | swappy -f -"))
 hl.bind("PRINT",               hl.dsp.exec_cmd("grim -c - | wl-copy"))
 
+hl.bind(mainMod .. " + CONTROL + B", hl.dsp.exec_cmd("sh ~/.local/bin/birthday.sh"))
+
 local directions = {
   { key = "H", direction = "left"  },
   { key = "L", direction = "right" },

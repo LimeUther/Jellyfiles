@@ -35,8 +35,6 @@ hl.config({
       passes    =     2,
       vibrancy  = .2696,
       noise     =     0,
-      popups = false,
-      input_methods = false
     },
   },
 
